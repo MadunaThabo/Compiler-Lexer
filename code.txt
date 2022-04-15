@@ -1,2 +1,1 @@
-a + b = c
-c = 0
+-1231223242 num { float return "ppr" while for { -179 } proc produce 0 12233456 -0

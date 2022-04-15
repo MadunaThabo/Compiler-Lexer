@@ -1,0 +1,16 @@
+Symbol read is: -1231223242 - negative number
+DataType read is: num - number
+Symbol read is: { - open curly bracket
+string read is: floatreturns LEXICAL ERROR
+Keyword read is: return - return keyword
+string read is: "ppr"returns LEXICAL ERROR
+Keyword read is: while - while keyword
+string read is: forreturns LEXICAL ERROR
+Symbol read is: { - open curly bracket
+Symbol read is: -179 - negative number
+Symbol read is: } - close curly bracket
+Keyword read is: proc - procedure keyword
+string read is: producereturns LEXICAL ERROR
+Symbol read is: 0 - zero - number
+Symbol read is: 12233456 -positive number
+Symbol read is: -0 - negative number
