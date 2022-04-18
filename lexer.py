@@ -1,31 +1,52 @@
-from ast import keyword
-from asyncio import constants
-import operator
+# from ast import keyword
+# from asyncio import constants
+
 
 
 def checkIfUserDefined(i):
-    print("will be defined")
+    letters =["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    numbers = ["0","1","2","3","4","5","6","7","8","9"]
+    if(i[0].isdigit()==True and i[0] not in letters):
+        output = "string read is: "  + i + " returns LEXICAL ERROR\n"
+        file2.write(output)
+        return
+    else:
+        for k in range(0,len(i)):
+            if(i[k] in letters):
+                continue
+            elif(i[k] in numbers):
+                continue
+            else:
+                output = "string read is: " + i + "returns Lexical Error\n"
+                file2.write(output)
+                return
+        output = "Symbol read is: "  + i + " - User Defined name\n"
+        file2.write(output)
+            
+
+
+                
     
 def checkIfNumber(i):
     if(len(i) > 1 and i[0]=="0"):
-        output = "string read is: "  + i + "returns LEXICAL ERROR"+"\n"
+        output = "Number read is: "  + i + "returns LEXICAL ERROR"+"\n"
         file2.write(output)
         return
     elif(i =="0"):
-        output = "Symbol read is: "  + i + " - zero - number\n"
+        output = "Number read is: "  + i + " - zero - number\n"
         file2.write(output)
     elif(i[0]=="-"):
         if(len(i)<2 and i[1]=="0"):           #example just a dash
-            output = "string read is: "  + i + "returns LEXICAL ERROR"+"\n"
+            output = "Number read is: "  + i + "returns LEXICAL ERROR"+"\n"
             file2.write(output)
             return 
         
         for k in range(1,len(i)):
             if(i[k].isdigit()==False):
-                output = "string read is: "  + i + "returns LEXICAL ERROR"+"\n"
+                output = "Number read is: "  + i + "returns LEXICAL ERROR"+"\n"
                 file2.write(output)
                 return      
-        output = "Symbol read is: "  + i + " - negative number\n"
+        output = "Number read is: "  + i + " - negative number\n"
         file2.write(output)
     else:
         for k in range(len(i)):
@@ -39,7 +60,9 @@ def checkIfNumber(i):
 
 
 def checkIfShortString(i):
-    print("will be defined")
+    output = i + "short string will be defined\n"
+    file2.write(output)
+    print(i,"short string will be defined")
 
 file = open("code.txt", 'r')
 
@@ -92,36 +115,43 @@ file2 = open("output.txt", "a+")
 file2.truncate(0)
 topology = file.readlines()
 for line in topology:
+    line = line.rstrip()
     token = line.split(" ")
     for i in token:
         if i in dataType:
             output = "DataType read is: " + i + " - " + dataType[i] + "\n"
             file2.write(output)
+            continue
         elif i in binaryOperators:
             output = "Binary Operator read is: "  + i + " - " + binaryOperators[i] + "\n"
             file2.write(output)
+            continue
         elif i in unaryOperators:
             output = "Unary Operators read is: "  + i + " - " + unaryOperators[i] + "\n"
             file2.write(output)
+            continue
         elif i in constants:
             output = "Constant read is: "  + i + " - " + constants[i] + "\n"
             file2.write(output)
+            continue
         elif i in types:
             output = "Type read is: "  + i + " - " + types[i] + "\n"
             file2.write(output)
+            continue
         elif i in keywords:
             output = "Keyword read is: "  + i + " - " + keywords[i] + "\n"
             file2.write(output)
+            continue
         elif i in symbols:
             output = "Symbol read is: "  + i + " - " + symbols[i] + "\n"
             file2.write(output)
+            continue
+        elif (i[0] == "\""):
+            checkIfShortString(i)
+        elif i[0].isdigit() or i[0]=="-":
+            checkIfNumber(i)
         else:
             checkIfUserDefined(i)
-            checkIfNumber(i)
-            checkIfShortString(i)
-            # i.split("\n")
-            # i = i[0]
-            # output = "string read is: "  + i + "returns LEXICAL ERROR"+"\n"
-            # file2.write(output)
+    
 file.close()
 file2.close()
