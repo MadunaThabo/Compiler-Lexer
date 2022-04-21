@@ -1,18 +1,1 @@
-Number read is: -1231223242 - negative number
-Constant read is: true - true boolean
-Constant read is: false - false boolean
-DataType read is: num - number
-Symbol read is: { - open curly bracket
-string read is: 2loat2returns LEXICAL ERROR
-Keyword read is: return - return keyword
-"ppr"short string will be defined
-Keyword read is: while - while keyword
-Symbol read is: for - User Defined name
-Symbol read is: { - open curly bracket
-Number read is: -179 - negative number
-Symbol read is: } - close curly bracket
-Keyword read is: proc - procedure keyword
-Symbol read is: produce - User Defined name
-Number read is: 0 - zero - number
-Symbol read is: 12233456 -positive number
-Number read is: -0 - negative number
+sysmbol read ( open bracket 
