@@ -1,4 +1,7 @@
-input(3) input
-()
-
-outputq
+"TMAN" num -1231223242 true false@ :=
+num { 2loat2 return "ppr" while for { -179 }
+proc
+produce 0 12233456 -0
+"match p "tea"
+"PLEASE LEAVE 5"
+input()
