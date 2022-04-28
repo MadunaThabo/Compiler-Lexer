@@ -111,7 +111,7 @@ def checkIfShortString(i, stringLen):
     shortStrings = [""," ","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     numbers = ["0","1","2","3","4","5","6","7","8","9"]
     if stringLen>=16:
-        output = "short string is too long"
+        output = "short string read "+i+" is too long\n"
         file2.write(output)
         return
 
@@ -130,6 +130,7 @@ def checkIfShortString(i, stringLen):
         file2.write(output)
                 
 def doCheck(i):
+    print("checking", i)
     if(len(i)<=0):
         return
     if i in dataType:
@@ -165,6 +166,7 @@ file2 = open("output.txt", "a+")
 file2.truncate(0)
 topology = file.readlines()
 for line in topology:
+    print("reading line",line)
     line = line.rstrip()
     word = ""
     last=-1
@@ -178,12 +180,10 @@ for line in topology:
                 last = i+2
                 word=""
         elif line[i] == "\"":
-            print("checking for short string", word)
             l = 0
             found = False
             last=0
             for k in range(i,len(line)):
-                print(line[k]+"this is our character", found)
                 if line[k] != "\"":
                     l+=1
                     word+=line[k]
@@ -193,7 +193,6 @@ for line in topology:
                     found = True
                     last = k
                     if(k >i):
-                        print("Checking why we here ", k)
                         break
                    
             if found:
@@ -211,6 +210,8 @@ for line in topology:
                 doCheck(word)
                 doCheck(line[i])
                 word = ""
+        elif i ==len(line)-1:
+            doCheck(word+line[i])
         else: 
             word+=line[i]
 
