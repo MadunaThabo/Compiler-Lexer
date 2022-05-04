@@ -1,7 +1,7 @@
-"TMAN 23" num -1231223242 true false@ :=
-num { 2loat2 return  while "ppr" for { -179 }
+input() "TMAN 12 T" num -1231223242 true false :=
+num { loat2 return  while "PPR" for { -179 }
 proc
-produce 0 12233456 -0
-"match p "TEA"
-"PLEASE LEAVE 5"
+produce 0 12233456 thuto input() -121
+"MATCH P " "TEA"
+"PLEASE aLEAVE 5"
 input()

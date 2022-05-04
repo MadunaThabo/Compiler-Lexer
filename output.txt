@@ -1,12 +1,15 @@
-string read is: "TMAN 23" - short string
+Unary Operators read is: input - input operation
+Symbol read is: ( - open bracket
+Symbol read is: ) - close bracket
+string read is: "TMAN 12 T" - short string
 DataType read is: num - number
 Number read is: -1231223242 - negative number
 Constant read is: true - true boolean
-string read is: false@returns Lexical Error
+Constant read is: false - false boolean
 symbol read is: := - assign operation
 DataType read is: num - number
 Symbol read is: { - open curly bracket
-string read is: 2loat2returns LEXICAL ERROR
+Symbol read is: loat2 - User Defined name
 Keyword read is: return - return keyword
 Keyword read is: while - while keyword
 string read is: "PPR" - short string
@@ -14,12 +17,15 @@ Symbol read is: for - User Defined name
 Symbol read is: { - open curly bracket
 Number read is: -179 - negative number
 Symbol read is: } - close curly bracket
+Keyword read is: proc - procedure keyword
 Symbol read is: produce - User Defined name
 Number read is: 0 - zero - number
 Symbol read is: 12233456 - positive number
-string read is: "match p " returns LEXICAL ERROR-  only capital letters and numbers are allowed and no special characters allowed
-string read is: TEA" returns LEXICAL ERROR- make sure has opening and closing "
-string read is: "PLEASE LEAVE 5" - short string
+Symbol read is: thuto - User Defined name
 Unary Operators read is: input - input operation
 Symbol read is: ( - open bracket
 Symbol read is: ) - close bracket
+Number read is: -121 - negative number
+string read is: "MATCH P " - short string
+string read is: "TEA" - short string
+string read is: "PLEASE aLEAVE 5" returns LEXICAL ERROR-  only capital letters and numbers are allowed and no special characters allowed

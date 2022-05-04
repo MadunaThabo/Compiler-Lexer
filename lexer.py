@@ -57,6 +57,7 @@ assign = {
     }
 
 tokens =[]
+errorLine = 0
 def checkIfNumber(i):
     # TODO: check if only a dash
     if(len(i) > 1 and i[0]=="0"):
