@@ -56,36 +56,44 @@ assign = {
     ":=":"assign operator"
     }
 
+tokens =[]
 def checkIfNumber(i):
     # TODO: check if only a dash
     if(len(i) > 1 and i[0]=="0"):
         output = "Number read is: "  + i + "returns LEXICAL ERROR"+"\n"
         file2.write(output)
+        print(output, "on line",errorLine); quit()
         return
     elif(i =="0"):
         output = "Number read is: "  + i + " - zero - number\n"
         file2.write(output)
+        tokens.append(i)
     elif(i[0]=="-"):
         if(len(i)<2 and i[1]=="0"):           #example just a dash
             output = "Number read is: "  + i + "returns LEXICAL ERROR"+"\n"
             file2.write(output)
+            print(output, "on line",errorLine); quit()
             return 
         
         for k in range(1,len(i)):
             if(i[k].isdigit()==False):
                 output = "Number read is: "  + i + "returns LEXICAL ERROR"+"\n"
                 file2.write(output)
+                print(output, "on line",errorLine); quit()
                 return      
         output = "Number read is: "  + i + " - negative number\n"
         file2.write(output)
+        tokens.append(i)
     else:
         for k in range(len(i)):
             if(i[k].isdigit()==False):
                 output = "string read is: "  + i + "returns LEXICAL ERROR"+"\n"
                 file2.write(output)
+                print(output, "on line",errorLine); quit()
                 return     
         output = "Symbol read is: "  + i + " - positive number\n"
         file2.write(output)
+        tokens.append(i)
 
 def checkIfUserDefined(i):
     letters =["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
@@ -93,6 +101,7 @@ def checkIfUserDefined(i):
     if(i[0].isdigit()==True and i[0] not in letters):
         output = "string read is: "  + i + " returns LEXICAL ERROR\n"
         file2.write(output)
+        print(output, "on line",errorLine); quit()
         return
     else:
         for k in range(0,len(i)):
@@ -103,9 +112,11 @@ def checkIfUserDefined(i):
             else:
                 output = "string read is: " + i + "returns Lexical Error\n"
                 file2.write(output)
+                print(output, "on line",errorLine); quit()
                 return
         output = "Symbol read is: "  + i + " - User Defined name\n"
         file2.write(output)
+        tokens.append(i)
 
 def checkIfShortString(i, stringLen):
     shortStrings = [""," ","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
@@ -113,11 +124,13 @@ def checkIfShortString(i, stringLen):
     if stringLen>=16:
         output = "short string read "+i+" is too long\n"
         file2.write(output)
+        print(output, "on line",errorLine); quit()
         return
 
     elif(i[0] != "\"" or i[len(i)-1] != "\""):
         output = "string read is: "  + i + " returns LEXICAL ERROR- make sure has opening and closing \""+"\n"
         file2.write(output)
+        print(output, "on line",errorLine); quit()
     else:
         for k in range(1, len(i)-1):
             if(i[k] in shortStrings or i[k] in numbers or i[k].isspace()):
@@ -125,32 +138,39 @@ def checkIfShortString(i, stringLen):
             else:
                 output = "string read is: "  + i + " returns LEXICAL ERROR-  only capital letters and numbers are allowed and no special characters allowed"+"\n"
                 file2.write(output)
+                print(output, "on line",errorLine); quit()
                 return
         output = "string read is: " + i + " - short string\n"
+        tokens.append(i)
         file2.write(output)
                 
 def doCheck(i):
-    print("checking", i)
     if(len(i)<=0):
         return
     if i in dataType:
         output = "DataType read is: " + i + " - " + dataType[i] + "\n"
         file2.write(output)
+        tokens.append(i)
     elif i in binaryOperators:
         output = "Binary Operator read is: "  + i + " - " + binaryOperators[i] + "\n"
         file2.write(output)
+        tokens.append(i)
     elif i in unaryOperators:
         output = "Unary Operators read is: "  + i + " - " + unaryOperators[i] + "\n"
         file2.write(output)
+        tokens.append(i)
     elif i in constants:
         output = "Constant read is: "  + i + " - " + constants[i] + "\n"
         file2.write(output)
+        tokens.append(i)
     elif i in keywords:
         output = "Keyword read is: "  + i + " - " + keywords[i] + "\n"
         file2.write(output)
+        tokens.append(i)
     elif i in symbols:
         output = "Symbol read is: "  + i + " - " + symbols[i] + "\n"
         file2.write(output)
+        tokens.append(i)
     elif i[0].isdigit() or i[0]=="-":
         checkIfNumber(i)
     # elif i[0] == "\"":
@@ -160,13 +180,14 @@ def doCheck(i):
     else:
         output = "symbol read is: " + i + " is undefined\n"
         file2.write(output)
+        print(output, "on line",errorLine); quit()
 
 output =""
 file2 = open("output.txt", "a+")
 file2.truncate(0)
 topology = file.readlines()
 for line in topology:
-    print("reading line",line)
+    errorLine +=1
     line = line.rstrip()
     word = ""
     last=-1
@@ -177,6 +198,7 @@ for line in topology:
             if line[i+1] == "=":
                 output = "symbol read is: := - assign operation\n"
                 file2.write(output)
+                tokens.append(line[i]+line[i+1])
                 last = i+2
                 word=""
         elif line[i] == "\"":
@@ -204,6 +226,7 @@ for line in topology:
             word=""
         elif(line[i].isspace() or line[i] in symbols):
             if line[i].isspace():
+                tokens.append(line[i])
                 doCheck(word)
                 word = ""
             elif line[i] in symbols:
@@ -215,5 +238,7 @@ for line in topology:
         else: 
             word+=line[i]
 
+for token in tokens:
+    print(token)
             
  
