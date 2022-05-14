@@ -228,7 +228,7 @@ class Lexer:
                     word=""
                 elif(line[i].isspace() or line[i] in symbols):
                     if line[i].isspace():
-                        tokens.append(line[i])
+                        # tokens.append(line[i])
                         doCheck(word)
                         word = ""
                     elif line[i] in symbols:
@@ -239,6 +239,4 @@ class Lexer:
                     doCheck(word+line[i])
                 else: 
                     word+=line[i]
-
-                
-x = Lexer.run()
+        return tokens
