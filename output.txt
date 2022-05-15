@@ -1,5 +1,14 @@
-Symbol read is: l - User Defined name
-Symbol read is: lllproc - User Defined name
+Keyword read is: proc - procedure keyword
+Symbol read is: thabiso - User Defined name
+Symbol read is: { - open curly bracket
+Symbol read is: { - open curly bracket
+Symbol read is: } - close curly bracket
+Keyword read is: return - return keyword
+Symbol read is: ; - semicolon
+DataType read is: num - number
+Symbol read is: thabo - User Defined name
+Symbol read is: } - close curly bracket
+Symbol read is: , - comma
 Keyword read is: main - main keyword
 Symbol read is: { - open curly bracket
 Symbol read is: call - User Defined name

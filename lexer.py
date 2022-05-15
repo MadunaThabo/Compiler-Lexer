@@ -1,3 +1,15 @@
+from contextlib import nullcontext
+from secrets import token_urlsafe
+
+
+class Returnable:
+    tokens = nullcontext
+    tokenType = nullcontext
+    
+    def __init__(self, tok, types):
+        self.tokens = tok
+        self.tokenTypes = types
+
 class Lexer:
     def run(fileName="code.txt"):
         file = open(fileName, 'r')
@@ -58,6 +70,7 @@ class Lexer:
             }
 
         tokens =[]
+        tokenTypes=[]
         errorLine = 0
         def checkIfNumber(i):
             # TODO: check if only a dash
@@ -70,6 +83,7 @@ class Lexer:
                 output = "Number read is: "  + i + " - zero - number\n"
                 file2.write(output)
                 tokens.append(i)
+                tokenTypes.append("zeroNumber")
             elif(i[0]=="-"):
                 if(len(i)<2 and i[1]=="0"):           #example just a dash
                     output = "Number read is: "  + i + "returns LEXICAL ERROR"+"\n"
@@ -86,6 +100,8 @@ class Lexer:
                 output = "Number read is: "  + i + " - negative number\n"
                 file2.write(output)
                 tokens.append(i)
+                tokenTypes.append("negativeNumber")
+
             else:
                 for k in range(len(i)):
                     if(i[k].isdigit()==False):
@@ -96,6 +112,8 @@ class Lexer:
                 output = "Symbol read is: "  + i + " - positive number\n"
                 file2.write(output)
                 tokens.append(i)
+                tokenTypes.append("positiveNumber")
+
 
         def checkIfUserDefined(i):
             letters =["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
@@ -119,6 +137,8 @@ class Lexer:
                 output = "Symbol read is: "  + i + " - User Defined name\n"
                 file2.write(output)
                 tokens.append(i)
+                tokenTypes.append("userDefined")
+
 
         def checkIfShortString(i, stringLen):
             shortStrings = [""," ","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
@@ -144,6 +164,7 @@ class Lexer:
                         return
                 output = "string read is: " + i + " - short string\n"
                 tokens.append(i)
+                tokenTypes.append("shortString")
                 file2.write(output)
                         
         def doCheck(i):
@@ -153,26 +174,32 @@ class Lexer:
                 output = "DataType read is: " + i + " - " + dataType[i] + "\n"
                 file2.write(output)
                 tokens.append(i)
+                tokenTypes.append(dataType[i])
             elif i in binaryOperators:
                 output = "Binary Operator read is: "  + i + " - " + binaryOperators[i] + "\n"
                 file2.write(output)
                 tokens.append(i)
+                tokenTypes.append(binaryOperators[i])
             elif i in unaryOperators:
                 output = "Unary Operators read is: "  + i + " - " + unaryOperators[i] + "\n"
                 file2.write(output)
                 tokens.append(i)
+                tokenTypes.append(unaryOperators[i])
             elif i in constants:
                 output = "Constant read is: "  + i + " - " + constants[i] + "\n"
                 file2.write(output)
                 tokens.append(i)
+                tokenTypes.append(constants[i])
             elif i in keywords:
                 output = "Keyword read is: "  + i + " - " + keywords[i] + "\n"
                 file2.write(output)
                 tokens.append(i)
+                tokenTypes.append(keywords[i])
             elif i in symbols:
                 output = "Symbol read is: "  + i + " - " + symbols[i] + "\n"
                 file2.write(output)
                 tokens.append(i)
+                tokenTypes.append(symbols[i])
             elif i[0].isdigit() or i[0]=="-":
                 checkIfNumber(i)
             # elif i[0] == "\"":
@@ -201,6 +228,7 @@ class Lexer:
                         output = "symbol read is: := - assign operation\n"
                         file2.write(output)
                         tokens.append(line[i]+line[i+1])
+                        tokenTypes.append(":=")
                         last = i+2
                         word=""
                 elif line[i] == "\"":
@@ -239,4 +267,5 @@ class Lexer:
                     doCheck(word+line[i])
                 else: 
                     word+=line[i]
-        return tokens
+        tokenReturn = Returnable(tokens,tokenTypes)
+        return tokenReturn

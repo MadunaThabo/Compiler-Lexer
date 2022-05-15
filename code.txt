@@ -1,1 +1,2 @@
-l lllproc main{call sihle halt; string}
+proc thabiso{ return; num thabo},
+main{call sihle halt; string}
