@@ -12,7 +12,10 @@ class Returnable:
 
 class Lexer:
     def run(fileName="code.txt"):
-        file = open(fileName, 'r')
+        try:
+            file = open(fileName, 'r')
+        except IOError:
+            return "error: The file does not exist"
         numbers = ["0","1","2","3","4","5","6","7","8","9"]
         letters =["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
         capitalLetters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
@@ -212,7 +215,10 @@ class Lexer:
                 print(output, "on line",errorLine); quit()
 
         output =""
-        file2 = open("output.txt", "a+")
+        try:
+            file2 = open("output.txt", "a+")
+        except IOError:
+            return "File output.txt not found"
         file2.truncate(0)
         topology = file.readlines()
         for line in topology:
@@ -269,3 +275,20 @@ class Lexer:
                     word+=line[i]
         tokenReturn = Returnable(tokens,tokenTypes)
         return tokenReturn
+
+
+
+def checkIfUserDefined(i):
+            letters =["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+            numbers = ["0","1","2","3","4","5","6","7","8","9"]
+            if(i[0].isdigit()==True and i[0] not in letters):
+                return False
+            else:
+                for k in range(0,len(i)):
+                    if(i[k] in letters):
+                        continue
+                    elif(i[k] in numbers):
+                        continue
+                    else:
+                        return False
+                return True

@@ -1,12 +1,32 @@
 Keyword read is: proc - procedure keyword
 Symbol read is: thabiso - User Defined name
 Symbol read is: { - open curly bracket
-Symbol read is: { - open curly bracket
+Keyword read is: return - return keyword
+Symbol read is: ; - semicolon
 Symbol read is: } - close curly bracket
+Symbol read is: , - comma
+Keyword read is: proc - procedure keyword
+Symbol read is: lihle - User Defined name
+Symbol read is: { - open curly bracket
+Keyword read is: proc - procedure keyword
+Symbol read is: thabo - User Defined name
+Symbol read is: { - open curly bracket
+Keyword read is: if - if keyword
+Keyword read is: return - return keyword
+Symbol read is: ; - semicolon
+Symbol read is: } - close curly bracket
+Symbol read is: , - comma
+Keyword read is: proc - procedure keyword
+Symbol read is: sizwe - User Defined name
+Symbol read is: { - open curly bracket
+Keyword read is: return - return keyword
+Symbol read is: ; - semicolon
+Symbol read is: } - close curly bracket
+Symbol read is: , - comma
 Keyword read is: return - return keyword
 Symbol read is: ; - semicolon
 DataType read is: num - number
-Symbol read is: thabo - User Defined name
+Symbol read is: themba - User Defined name
 Symbol read is: } - close curly bracket
 Symbol read is: , - comma
 Keyword read is: main - main keyword
@@ -16,4 +36,5 @@ Symbol read is: sihle - User Defined name
 Keyword read is: halt - halt keyword
 Symbol read is: ; - semicolon
 DataType read is: string - text string
+Symbol read is: lihle - User Defined name
 Symbol read is: } - close curly bracket

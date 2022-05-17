@@ -1,2 +1,19 @@
-proc thabiso{ return; num thabo},
-main{call sihle halt; string}
+proc thabiso{
+    return;
+},
+proc lihle{
+    proc thabo{
+        if 
+        return;
+    },
+    proc sizwe{
+        return;
+    },
+    return;
+    num themba
+},
+main{
+    call sihle
+    halt;
+    string lihle
+}
