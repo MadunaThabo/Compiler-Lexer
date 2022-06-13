@@ -1,2 +1,2 @@
-# COS341 Compiler
-making a new compiler 
+# Compiler Lexer
+making a new lexer 
